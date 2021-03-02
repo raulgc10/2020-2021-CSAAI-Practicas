@@ -1,0 +1,15 @@
+body{
+    background-color: black;
+}
+h1{
+    color: blueviolet;background-color: burlywood;
+}
+#especial{
+    color: cadetblue;background-color: chocolate;
+}
+h2{
+    color: cyan; background-color: darkgrey;
+}
+#especial2{
+    color: darkkhaki;background-color: darkolivegreen;
+}
