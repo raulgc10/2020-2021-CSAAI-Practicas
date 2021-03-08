@@ -15,3 +15,25 @@ body{
     text-align: center;
     background-color: wheat;
 }
+
+#cuadro3{
+    float: right;
+    width: 73%;
+    text-align: center;
+    background-color: wheat;
+}
+
+#idiomas{
+    text-align: left;
+    
+}
+#datos{
+    text-align: left;
+}
+#hobbies{
+    text-align: left;
+    
+}
+#otros{
+    text-align: left;
+}
