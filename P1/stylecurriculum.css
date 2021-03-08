@@ -1,0 +1,17 @@
+
+body{
+    background-color: black;
+}
+
+#cuadro{
+    float: left;
+    width: 25%;
+    text-align: center;
+    background-color: wheat;
+}
+#cuadro2{
+    float: right;
+    width: 73%;
+    text-align: center;
+    background-color: wheat;
+}
