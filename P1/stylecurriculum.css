@@ -29,11 +29,14 @@ body{
 }
 #datos{
     text-align: left;
+    font-weight: bold;
 }
 #hobbies{
     text-align: left;
+    font-weight: bold;
     
 }
 #otros{
     text-align: left;
+    font-weight: bold;
 }
