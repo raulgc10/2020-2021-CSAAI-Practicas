@@ -1,6 +1,7 @@
 
 body{
     background-color: black;
+    
 }
 
 #cuadro{
@@ -14,6 +15,7 @@ body{
     width: 73%;
     text-align: center;
     background-color: wheat;
+    border-bottom: solid 3ch black;
 }
 
 #cuadro3{
@@ -34,9 +36,36 @@ body{
 #hobbies{
     text-align: left;
     font-weight: bold;
-    
 }
 #otros{
     text-align: left;
     font-weight: bold;
+}
+#nombre{
+    border-bottom: 1ch solid black;
+}
+
+#Titulo1{
+    text-decoration: black underline;
+}
+#Titulo2{
+    text-decoration: black underline;
+}
+#Titulo3{
+    text-decoration: black underline;
+}
+#Titulo4{
+    text-decoration: black underline;
+}
+#Titulo5{
+    text-decoration: black underline;
+}
+#Titulo6{
+    text-decoration: black underline;
+}
+#Titulo7{
+    text-decoration: black underline;
+}
+#Titulo8{
+    text-decoration: black underline;
 }
