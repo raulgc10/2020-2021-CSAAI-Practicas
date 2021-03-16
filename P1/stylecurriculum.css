@@ -5,7 +5,18 @@ body{
     font-family: igor, Arial, Helvetica, sans-serif;
     font-size: 100%;
 }
+h2 {
+    text-shadow: 2px 2px 5px hotpink ;
+    
+}
+h4 {
+    text-shadow: 2px 2px 5px hotpink ;
+    
+}
 #info{
+    border-bottom: 1ch white solid;
+}
+#logros{
     border-bottom: 1ch white solid;
 }
 @font-face{
