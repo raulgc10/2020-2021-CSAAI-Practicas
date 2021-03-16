@@ -14,17 +14,17 @@ h4 {
     
 }
 #info{
-    border-bottom: 1ch white solid;
+    border-bottom: 5px white solid;
 }
 #logros{
-    border-bottom: 1ch white solid;
+    border-bottom: 5px white solid;
 }
 @font-face{
     font-family: "igor";
     src: url(IGOR-BoldItalic.ttf);
 }
 #redes{
-    border-bottom: 1ch white solid;
+    border-bottom: 5px white solid;
     ;
 }
 #cuadro{
@@ -95,4 +95,8 @@ h4 {
 }
 #Titulo9{
     text-decoration: white underline;
+}
+#video{
+    border: 8px solid white;
+    box-shadow: hotpink 2px 2px 5px;
 }
