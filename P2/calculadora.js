@@ -19,7 +19,7 @@ const ESTADO = {
  
  //-- Variable de estado de la calculadora
  //-- Al comenzar estamos en el estado incial
- let estado = ESTADO.INIT;   
+ let estado = ESTADO.INIT;
 
 //-- Función de retrollamada de los digitos
 function digito(ev)
@@ -44,7 +44,7 @@ function digito(ev)
         display.innerHTML += ev.target.value;
         estado = ESTADO.OP2;
     } else if (estado == ESTADO.OP2){
-        display.innerHTML += ev.target.value;
+        display.innerHTML += ev.target.value;  
     }
     
 
@@ -71,8 +71,8 @@ for (let boton of digitos) {
 suma.onclick = (ev) => {
 
     //-- Insertar simbolo de sumar
-    display.innerHTML += ev.target.value;
-
+    display.innerHTML += suma.value;
+    estado=ESTADO.OPERATION;
     //-- ¡Ojo! Aquí se inserta el + siempre!
     //-- Para que la calculadora funcione bien
     //-- sólo se debe permitir insertar el operador
@@ -82,9 +82,9 @@ suma.onclick = (ev) => {
 }
 resta.onclick = (ev) => {
 
-    //-- Insertar simbolo de sumar
-    display.innerHTML -= ev.target.value;
-
+    //-- Insertar simbolo de restar
+    display.innerHTML += resta.value;
+    estado=ESTADO.OPERATION;
     //-- ¡Ojo! Aquí se inserta el + siempre!
     //-- Para que la calculadora funcione bien
     //-- sólo se debe permitir insertar el operador
@@ -94,9 +94,9 @@ resta.onclick = (ev) => {
 }
 multiplicacion.onclick = (ev) => {
 
-    //-- Insertar simbolo de sumar
-    display.innerHTML *= ev.target.value;
-
+    //-- Insertar simbolo de multiplicar
+    display.innerHTML += multiplicacion.value;
+    estado=ESTADO.OPERATION;
     //-- ¡Ojo! Aquí se inserta el + siempre!
     //-- Para que la calculadora funcione bien
     //-- sólo se debe permitir insertar el operador
@@ -106,9 +106,9 @@ multiplicacion.onclick = (ev) => {
 }
 division.onclick = (ev) => {
 
-    //-- Insertar simbolo de sumar
-    display.innerHTML /= ev.target.value;
-
+    //-- Insertar simbolo de dividir
+    display.innerHTML += division.value;
+    estado=ESTADO.OPERATION;
     //-- ¡Ojo! Aquí se inserta el + siempre!
     //-- Para que la calculadora funcione bien
     //-- sólo se debe permitir insertar el operador
@@ -119,17 +119,17 @@ division.onclick = (ev) => {
 
 //-- Evaluar la expresion
 igual.onclick = () => {
-  
+    if (estado==ESTADO.OP2){
     //-- Calcular la expresión y añadirla al display
-    if (estado == ESTADO.OP2){
         display.innerHTML = eval(display.innerHTML);
-        ESTADO = ESTADO.OP1
+        estado = ESTADO.OP1
     }
+}
     //-- ¡Ojo! Aquí se hace siempre!
     //-- Sólo se debe permitar que eso se haga
     //-- si se está en el estado final (OP2)
   
-}
+
 del.onclick = () => {
     display.innerHTML = display.innerHTML.slice(0, -1);
     
