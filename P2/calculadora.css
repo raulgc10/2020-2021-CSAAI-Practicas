@@ -2,20 +2,49 @@
     font-family: "calculator";
     src: url(Calculator.ttf);
 }
-button{
+h1{
     font-family: calculator, Arial, Helvetica, sans-serif;
-    font-size: 150%;
-    background-color: black;
+    font-size: 400%; 
+    color: orange;
+    text-align: center;
+    text-shadow: white 2px 2px;
+    
+}
+button{
+    
+    font-family: calculator, Arial, Helvetica, sans-serif;
+    font-size: 300%;
+    background-color: rgb(61, 0, 61);
     color: white;
-    width: 60px;
-    height: 40px;
+    width: 100px;
+    height: 80px;
+    border-style: solid;
+    border-color: violet;
+    text-shadow: violet 2px 2px;
+    
 }
 p{
-    font-family: calculator, Arial, Helvetica, sans-serif;
-    font-size: 150%;
     
-    color: black;
+        width: 350px;
+        height: 60px;
+        border-color: white;
+        background-color: rgb(0, 189, 189);
+        text-shadow: violet 1px 1px;
+        color: white;
+        font-family: calculator, Arial, Helvetica, sans-serif;
+        font-size: 50px;  
+        border-radius: 20px 20px 20px 20px;
+        text-align: center;
+        margin: 15px;
+        float: center;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: violet 6px 6px;
 }
 table{
     background-color: gray;
+}
+body{
+    background-image: url("wavedef.jpg");
+    text-align: center;
 }

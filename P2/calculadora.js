@@ -28,7 +28,7 @@ function digito(ev)
         estado = ESTADO.OP1;
     } else if (estado == ESTADO.OP1){
         display.innerHTML += ev.target.value;
-        estado = ESTADO.OPERATION;
+        
     } else if (estado == ESTADO.OPERATION){
         display.innerHTML += ev.target.value;
         estado = ESTADO.OP2;
@@ -49,12 +49,17 @@ for (i=0; i<digitos.length; i++){
 for (i=0; i<operadores.length; i++){
     operadores[i].onclick = (ev)=>{
       if(estado == ESTADO.OP1){
-        display.innerHTML += ev.target.value;
-        estado = ESTADO.OPERATION;
+        operador(ev.target.value);
+        estado=ESTADO.OPERATION
       }
     }
 }
-
+function operador(calculo){
+    if (estado != ESTADO.OPERATION) {
+      display.innerHTML += calculo;
+      estado = ESTADO.OPERATION;
+    }
+}
 for (let boton of digitos) {
     boton.onclick = digito;
 }
