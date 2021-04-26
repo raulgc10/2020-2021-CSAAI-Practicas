@@ -4,28 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calculadora.css">
     <script src="calculadora.js" defer></script>
     <title>Calculadora Raul Gomez</title>
 </head>
 <body>
+    <h1></h1>
     <p id="display"></p>
-    <button type="button" id="boton1" class="digito" value="1">1</button>
-    <button type="button" id="boton2" class="digito" value="2">2</button>
-    <button type="button" id="boton3" class="digito" value="3">3</button>
-    <button type="button" id="boton4" class="digito" value="4">4</button>
-    <button type="button" id="boton5" class="digito" value="5">5</button>
-    <button type="button" id="boton6" class="digito" value="6">6</button>
-    <button type="button" id="boton7" class="digito" value="7">7</button>
-    <button type="button" id="boton8" class="digito" value="8">8</button>
-    <button type="button" id="boton9" class="digito" value="9">9</button>
-    <button type="button" id="suma" class="operador" value="+">+</button>
-    <button type="button" id="resta" class="operador" value="-">-</button>
-    <button type="button" id="division" class="operador" value="/">/</button>
-    <button type="button" id="multiplicacion" class="operador" value="*">x</button>
-    <br>
-    <br>
-    <button type="button" id="clear">AC</button>
-    <button type="button" id="igual">=</button>
-    <button type="button" id="del">DEL</button>
+    <table>
+        <tr>
+            <td><button type="button" id="boton7" class="digito" value="7">7</button></td>
+            <td><button type="button" id="boton8" class="digito" value="8">8</button></td>
+            <td><button type="button" id="boton9" class="digito" value="9">9</button></td>
+            <td><button type="button" id="clear">AC</button></td>
+            <td><button type="button" id="del">DEL</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" id="boton4" class="digito" value="4">4</button></td>
+            <td><button type="button" id="boton5" class="digito" value="5">5</button></td>
+            <td><button type="button" id="boton6" class="digito" value="6">6</button></td>
+            <td><button type="button" id="division" class="operador" value="/">/</button></td>
+            <td><button type="button" id="multiplicacion" class="operador" value="*">x</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" id="boton1" class="digito" value="1">1</button></td>
+            <td><button type="button" id="boton2" class="digito" value="2">2</button></td>
+            <td><button type="button" id="boton3" class="digito" value="3">3</button></td> 
+            <td><button type="button" id="suma" class="operador" value="+">+</button></td>
+            <td><button type="button" id="resta" class="operador" value="-">-</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" id="boton1" class="digito" value="0">0</button></td>
+            <td><button type="button" id="igual">=</button></td>
+        </tr>
+    </table>
+
+
 </body>
 </html>

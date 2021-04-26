@@ -1,0 +1,21 @@
+@font-face{
+    font-family: "calculator";
+    src: url(Calculator.ttf);
+}
+button{
+    font-family: calculator, Arial, Helvetica, sans-serif;
+    font-size: 150%;
+    background-color: black;
+    color: white;
+    width: 60px;
+    height: 40px;
+}
+p{
+    font-family: calculator, Arial, Helvetica, sans-serif;
+    font-size: 150%;
+    
+    color: black;
+}
+table{
+    background-color: gray;
+}
