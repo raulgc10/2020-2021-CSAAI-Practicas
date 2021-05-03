@@ -64,7 +64,7 @@ for (let boton of digitos) {
     boton.onclick = digito;
 }
 
-// Calcular el display
+// Calcular lo que haya en el display
 igual.onclick = () => {
     if (estado==ESTADO.OP2){
     //-- Calcular la expresión y añadirla al display
