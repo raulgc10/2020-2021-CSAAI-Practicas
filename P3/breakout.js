@@ -122,3 +122,89 @@ for (let i = 0; i < LADRILLO.F; i++) {
     }
   }
 }
+function DibujarLadrillos(){
+  for (let i = 1; i < LADRILLO.F; i++){//Inicializo en 1 en vez de en 0 para poder despegar los ladrillos del borde
+    for(let j = 1; j < LADRILLO.C; j++){////Inicializo en 1 en vez de en 0 para poder despegar los ladrillos del borde
+
+      if (ladrillos[i][j].visible){
+          ctx.beginPath();
+          ctx.rect(ladrillos[i][j].x, ladrillos[i][j].y, ladrillo.anch, ladrillo.alt);
+          ctx.fillStyle = "#B802AF";
+          ctx.fill();
+          ctx.closePath();
+      }
+    }
+  }
+
+}
+function update(){
+  VidasRestantes();
+  PuntosConseguidos();
+  DibujarRaqueta();
+  DibujarBola();
+  DibujarLadrillos();
+
+  //Bucle para la colisión de la pelota con los ladrillos.
+  for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en el bucle de arriba
+    for (let j = 1; j < ladrillo.c; j++) {
+      if (ladrillos[i][j].visible) {
+        if ((y >= ladrillos[i][j].y) && (y <= (ladrillos[i][j].y + 20))){
+          if ((x >= ladrillos[i][j].x) && (x <= (ladrillos[i][j].x + 70))){
+            ladrillos[i][j].visible = false;
+            vely = -vely;
+            points += 10;
+            Clash.play();
+          }
+        }
+      }
+    }
+  }
+
+  //Definimos el movimiento de la pelota y que ocurre cuando choca con la raqueta
+
+  if(x + velx > canvas.width - radiobola || x + velx < radiobola){
+      velx = -velx;
+  }
+  if(y + vely < radiobola) {
+      vely = -vely;
+  }else if(y + vely > canvas.height - radiobola){
+      if(x > raquetaX && x <raquetaX + raquetaWidth){
+          vely = -vely;
+          Rebound.play();
+      }
+  }
+
+  //Definimos lo que ocurre cuando la pelota toca el suelo (pérdida de vida)
+
+  if (y >= canvas.height){
+    velx = 0;
+    vely = 0;
+    x = canvas.width/2;
+    y = canvas.height - 10;
+    raqueta= (canvas.width - raquetaWidth)/2;
+    lifes -= 1;
+  }else if(numVidas == 0){
+    velx = 0;
+    vely = 0;
+    raquetaX = (canvas.width - raquetaWidth)/2;
+    document.getElementById("canvas").style.display = "none";
+  }
+//Definimos que ocurre cuando se destruyen todos los bloques(ganamos el juego)
+  if(puntuacion == 450){
+    velx = 0;
+    vely = 0;
+    raqueta = (canvas.width - raquetaWidth)/2;
+    document.getElementById("canvas").style.display = "none";
+  }
+
+  if(derecha && raqueta < canvas.width - raquetaWidth){
+      raqueta += 7;
+  }else if(izquierda && raqueta > 0) {
+      raqueta -= 7;
+  }
+
+  //-- 4) Volver a ejecutar update cuando toque
+  x += velx;
+  y += vely;
+  requestAnimationFrame(update);
+}
