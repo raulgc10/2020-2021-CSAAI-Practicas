@@ -27,7 +27,7 @@ function DibujarRaqueta(){
 }
 var x = canvas.width/2;
 var y = canvas.height - 10;
-var radio = 10;
+var radio = 7;
 
 function DibujarBola(){
   ctx.beginPath();
@@ -57,7 +57,7 @@ function PuntosConseguidos(){
 }
 //Empieza el juego
 window.onkeydown = (e) => {
-  if(e.keyCode == 13){
+  if(e.keyCode == 32){
     velx = 3;
     vely = -3;
   }
@@ -105,7 +105,7 @@ for (let i = 0; i < LADRILLO.filas; i++) {
   for (let j = 0; j < LADRILLO.columnas; j++) {
     ladrillos[i][j] = {
       x: (LADRILLO.base + LADRILLO.padding) * j,
-      y: (LADRILLO.altura + LADRILLO.padding) * i,
+      y: 20 + (LADRILLO.altura + LADRILLO.padding) * i,
       w: LADRILLO.base,
       h: LADRILLO.altura,
       padding: LADRILLO.padding,
@@ -117,7 +117,7 @@ for (let i = 0; i < LADRILLO.filas; i++) {
 
 //Dibujar los ladrillos
 function DibujarLadrillos(){
-  for (let i = 1; i < LADRILLO.filas; i++){
+  for (let i = 0; i < LADRILLO.filas; i++){
     for(let j = 0; j < LADRILLO.columnas; j++){
 
       if (ladrillos[i][j].visible){
@@ -140,14 +140,14 @@ function update(){
   DibujarLadrillos();
 
  
-  for (let i = 1; i < LADRILLO.filas; i++) {
+  for (let i = 0; i < LADRILLO.filas; i++) {
     for (let j = 0; j < LADRILLO.columnas; j++) {
       if (ladrillos[i][j].visible) {
-        if ((y >= ladrillos[i][j].y) && (y <= (ladrillos[i][j].y + 20))){
-          if ((x >= ladrillos[i][j].x) && (x <= (ladrillos[i][j].x + 70))){
+        if ((y >= ladrillos[i][j].y) && (y <= (ladrillos[i][j].y + 15))){
+          if ((x >= ladrillos[i][j].x) && (x <= (ladrillos[i][j].x + 35))){
             ladrillos[i][j].visible = false;
             vely = -vely;
-            points = points + 10;
+            points = points + 1;
           }
         }
       }
@@ -182,7 +182,7 @@ function update(){
     raqueta = (canvas.width - raquetaAncho)/2;
   }
 //Definimos que ocurre cuando se destruyen todos los bloques(ganamos el juego)
-  if(points == 650){
+  if(points == 78){
     velx = 0;
     vely = 0;
     raqueta = (canvas.width - raquetaAncho)/2;
