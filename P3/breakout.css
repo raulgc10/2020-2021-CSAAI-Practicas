@@ -46,3 +46,11 @@ body{
   width: 500px;
   height: 500px;
 }
+#again{
+  color: black;
+  background-color: turquoise;
+  font-family: arcade, Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  text-align: center;
+  margin-left: 15cm;
+}
