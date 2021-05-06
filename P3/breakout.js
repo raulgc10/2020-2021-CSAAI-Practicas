@@ -5,6 +5,8 @@ const canvas = document.getElementById("canvas");
 const choqueladrillo = new Audio('ladrillo.mp3');
 const choqueraqueta = new Audio('raqueta.mp3');
 const perdervida = new Audio('vida.mp3');
+const victoria = new Audio('victoria.mp3');
+const derrota = new Audio('derrota.mp3');
 
 //-- Definir el tamaño del convas
 canvas.width = 500;
@@ -189,12 +191,14 @@ function update(){
     velx = 0;
     vely = 0;
     raqueta = (canvas.width - raquetaAncho)/2;
+    derrota.play();
   }
 //Ganamos el juego
   if(points == 78){
     velx = 0;
     vely = 0;
     raqueta = (canvas.width - raquetaAncho)/2;
+    victoria.play();
   }
 //Movimiento de la raqueta
   if(derecha && raqueta < canvas.width - raquetaAncho){
