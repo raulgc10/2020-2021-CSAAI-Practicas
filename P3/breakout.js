@@ -192,13 +192,20 @@ function update(){
     vely = 0;
     raqueta = (canvas.width - raquetaAncho)/2;
     derrota.play();
+    document.getElementById("lose").style.display = "block";
+    document.getElementById("canvas").style.display = "none";
+    document.getElementById("again").style.display = "";
+    
   }
 //Ganamos el juego
-  if(points == 78){
+  if(points == 2){
     velx = 0;
     vely = 0;
     raqueta = (canvas.width - raquetaAncho)/2;
     victoria.play();
+    document.getElementById("win").style.display = "block";
+    document.getElementById("canvas").style.display = "none";
+    document.getElementById("again").style.display = "";
   }
 //Movimiento de la raqueta
   if(derecha && raqueta < canvas.width - raquetaAncho){
