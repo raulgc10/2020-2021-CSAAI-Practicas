@@ -1,50 +1,59 @@
 console.log("Ejecutando JS...");
 
 const canvas = document.getElementById("canvas");
-start = document.getElementById("start");
+
 
 //-- Definir el tamaño del convas
-canvas.width = 340;
+canvas.width = 500;
 canvas.height = 480;
 
 //-- Obtener el contexto del canvas
 const ctx = canvas.getContext("2d");
 
-//-- Coordenadas del objeto
-let x = 170;
-let y = 330;
-
 //-- Velocidades del objeto
 let velx = 0;
 let vely = 0;
 // Raqueta
-var raquetaHeight = 10;
-var raquetaWidth = 75;
-var raqueta = (canvas.width - raquetaWidth)/2;
+var raquetaAltura = 10;
+var raquetaAncho = 65;
+var raqueta = (canvas.width - raquetaAncho)/2;
 //Dibuja la raqueta en pantala
 function DibujarRaqueta(){
   ctx.beginPath();
-    ctx.rect(raqueta, canvas.height-raquetaHeight, raquetaWidth, raquetaHeight);
+    ctx.rect(raqueta, canvas.height-raquetaAltura, raquetaAncho, raquetaAltura);
     ctx.fillStyle = 'white';
     ctx.fill();
   ctx.closePath();  
 }
+var x = canvas.width/2;
+var y = canvas.height - 10;
+var radio = 10;
+
+function DibujarBola(){
+  ctx.beginPath();
+  ctx.arc(x, y, radio, 0, Math.PI*2);
+  ctx.fillStyle = "white";
+  ctx.fill();
+  ctx.closePath();
+}
+
 
 var lifes = 5;
-var points = 0;
 
 //Vidas restantes
 function VidasRestantes(){
-  ctx.fillText("Vidas restantes: " +lifes, 10, 10);
+  ctx.fillText("Vidas restantes: " +lifes, 8, 12);
   ctx.fillStyle = 'white';
-  ctx.font = "10px Arial";
+  ctx.font = "15px Arial";
 }
+
+var points = 0;
 
 //Puntos conseguidos
 function PuntosConseguidos(){
-  ctx.fillText("Puntos: " +points, 10, 10);
+  ctx.fillText("Puntos: " +points, 275, 12);
   ctx.fillStyle = 'white';
-  ctx.font = "10px Arial"
+  ctx.font = "15px Arial"
 }
 //Empieza el juego
 window.onkeydown = (e) => {
@@ -81,55 +90,40 @@ function keyDownHandler(e){
   }
 }
 
-const ladrillos = [];
+
 const LADRILLO = {
-  filas = 5,
-  columnas = 9,
-  altura = 5, 
-  base = 20,
-  padding = 2,
-  visible = true
+  filas : 6,
+  columnas : 13,
+  altura : 15, 
+  base : 35,
+  padding : 4,
+  visible : true,
 }  
-for (let i = 0; i < LADRILLO.F; i++) {
-  ladrillo[i] = [];  //-- Inicializar la fila. Las filas son a su vez Arrays que inicialmente están vacíos
-
-  //-- Recorrer las C columnas de la fila i. La variable j toma valores de 0 hasta C-1 (numero de columnas)
-  for (let j = 0; j < LADRILLO.C; j++) {
-
-    //-- Calcular valores para el ladrillo de la fila i y la columna j
-    //-- Algunos valores son constates. Otros depeden de i y j
+const ladrillos = [];
+for (let i = 0; i < LADRILLO.filas; i++) {
+  ladrillos[i] = []; 
+  for (let j = 0; j < LADRILLO.columnas; j++) {
     ladrillos[i][j] = {
-      x: (LADRILLO.w + LADRILLO.padding) * j,
-      y: (LADRILLO.h + LADRILLO.padding) * i,
-      w: LADRILLO.w,
-      h: LADRILLO.h,
+      x: (LADRILLO.base + LADRILLO.padding) * j,
+      y: (LADRILLO.altura + LADRILLO.padding) * i,
+      w: LADRILLO.base,
+      h: LADRILLO.altura,
       padding: LADRILLO.padding,
       visible: LADRILLO.visible
     };
   }
 }
-//Dibujar ladrillos
-for (let i = 0; i < LADRILLO.F; i++) {
-  for (let j = 0; j < LADRILLO.C; j++) {
 
-    //-- Si el ladrillo es visible se pinta
-    if (ladrillos[i][j].visible) {
-      ctx.beginPath();
-      ctx.rect(ladrillos[i][j].x, ladrillos[i][j].y, LADRILLO.w, LADRILLO.h);
-      ctx.fillStyle = 'white';
-      ctx.fill();
-      ctx.closePath();
-    }
-  }
-}
+
+//Dibujar los ladrillos
 function DibujarLadrillos(){
-  for (let i = 1; i < LADRILLO.F; i++){//Inicializo en 1 en vez de en 0 para poder despegar los ladrillos del borde
-    for(let j = 1; j < LADRILLO.C; j++){////Inicializo en 1 en vez de en 0 para poder despegar los ladrillos del borde
+  for (let i = 1; i < LADRILLO.filas; i++){
+    for(let j = 0; j < LADRILLO.columnas; j++){
 
       if (ladrillos[i][j].visible){
           ctx.beginPath();
-          ctx.rect(ladrillos[i][j].x, ladrillos[i][j].y, ladrillo.anch, ladrillo.alt);
-          ctx.fillStyle = "#B802AF";
+          ctx.rect(ladrillos[i][j].x, ladrillos[i][j].y, LADRILLO.base, LADRILLO.altura);
+          ctx.fillStyle = "white";
           ctx.fill();
           ctx.closePath();
       }
@@ -138,22 +132,22 @@ function DibujarLadrillos(){
 
 }
 function update(){
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   VidasRestantes();
   PuntosConseguidos();
-  DibujarRaqueta();
   DibujarBola();
+  DibujarRaqueta();
   DibujarLadrillos();
 
-  //Bucle para la colisión de la pelota con los ladrillos.
-  for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en el bucle de arriba
-    for (let j = 1; j < ladrillo.c; j++) {
+ 
+  for (let i = 1; i < LADRILLO.filas; i++) {
+    for (let j = 0; j < LADRILLO.columnas; j++) {
       if (ladrillos[i][j].visible) {
         if ((y >= ladrillos[i][j].y) && (y <= (ladrillos[i][j].y + 20))){
           if ((x >= ladrillos[i][j].x) && (x <= (ladrillos[i][j].x + 70))){
             ladrillos[i][j].visible = false;
             vely = -vely;
-            points += 10;
-            Clash.play();
+            points = points + 10;
           }
         }
       }
@@ -162,15 +156,14 @@ function update(){
 
   //Definimos el movimiento de la pelota y que ocurre cuando choca con la raqueta
 
-  if(x + velx > canvas.width - radiobola || x + velx < radiobola){
+  if(x + velx > canvas.width - radio || x + velx < radio){
       velx = -velx;
   }
-  if(y + vely < radiobola) {
+  if(y + vely < radio) {
       vely = -vely;
-  }else if(y + vely > canvas.height - radiobola){
-      if(x > raquetaX && x <raquetaX + raquetaWidth){
+  }else if(y + vely > canvas.height - radio){
+      if(x > raqueta && x <raqueta + raquetaAncho){
           vely = -vely;
-          Rebound.play();
       }
   }
 
@@ -181,23 +174,21 @@ function update(){
     vely = 0;
     x = canvas.width/2;
     y = canvas.height - 10;
-    raqueta= (canvas.width - raquetaWidth)/2;
+    raqueta= (canvas.width - raquetaAncho)/2;
     lifes -= 1;
-  }else if(numVidas == 0){
+  }else if(lifes == 0){
     velx = 0;
     vely = 0;
-    raquetaX = (canvas.width - raquetaWidth)/2;
-    document.getElementById("canvas").style.display = "none";
+    raqueta = (canvas.width - raquetaAncho)/2;
   }
 //Definimos que ocurre cuando se destruyen todos los bloques(ganamos el juego)
-  if(puntuacion == 450){
+  if(points == 650){
     velx = 0;
     vely = 0;
-    raqueta = (canvas.width - raquetaWidth)/2;
-    document.getElementById("canvas").style.display = "none";
+    raqueta = (canvas.width - raquetaAncho)/2;
   }
 
-  if(derecha && raqueta < canvas.width - raquetaWidth){
+  if(derecha && raqueta < canvas.width - raquetaAncho){
       raqueta += 7;
   }else if(izquierda && raqueta > 0) {
       raqueta -= 7;
@@ -208,3 +199,4 @@ function update(){
   y += vely;
   requestAnimationFrame(update);
 }
+update();
