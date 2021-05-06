@@ -25,10 +25,12 @@ function DibujarRaqueta(){
     ctx.fill();
   ctx.closePath();  
 }
+
 var x = canvas.width/2;
 var y = canvas.height - 10;
-var radio = 7;
+var radio = 7;//radio de la bola
 
+//Dibujar la bola en pantalla
 function DibujarBola(){
   ctx.beginPath();
   ctx.arc(x, y, radio, 0, Math.PI*2);
@@ -90,7 +92,7 @@ function keyDownHandler(e){
   }
 }
 
-
+//Definimos las características del ladrillo
 const LADRILLO = {
   filas : 6,
   columnas : 13,
@@ -100,6 +102,7 @@ const LADRILLO = {
   visible : true,
 }  
 const ladrillos = [];
+//Recorrer array de ladrillos
 for (let i = 0; i < LADRILLO.filas; i++) {
   ladrillos[i] = []; 
   for (let j = 0; j < LADRILLO.columnas; j++) {
@@ -139,7 +142,7 @@ function update(){
   DibujarRaqueta();
   DibujarLadrillos();
 
- 
+ //Colisión de la bola con los ladrillos
   for (let i = 0; i < LADRILLO.filas; i++) {
     for (let j = 0; j < LADRILLO.columnas; j++) {
       if (ladrillos[i][j].visible) {
@@ -154,7 +157,7 @@ function update(){
     }
   }
 
-  //Definimos el movimiento de la pelota y que ocurre cuando choca con la raqueta
+//Rebote de la pelota
 
   if(x + velx > canvas.width - radio || x + velx < radio){
       velx = -velx;
@@ -167,7 +170,7 @@ function update(){
       }
   }
 
-  //Definimos lo que ocurre cuando la pelota toca el suelo (pérdida de vida)
+  //Pelota toca el suelo
 
   if (y >= canvas.height){
     velx = 0;
@@ -181,17 +184,17 @@ function update(){
     vely = 0;
     raqueta = (canvas.width - raquetaAncho)/2;
   }
-//Definimos que ocurre cuando se destruyen todos los bloques(ganamos el juego)
+//Ganamos el juego
   if(points == 78){
     velx = 0;
     vely = 0;
     raqueta = (canvas.width - raquetaAncho)/2;
   }
-
+//Movimiento de la raqueta
   if(derecha && raqueta < canvas.width - raquetaAncho){
-      raqueta += 7;
+      raqueta += 5;
   }else if(izquierda && raqueta > 0) {
-      raqueta -= 7;
+      raqueta -= 5;
   }
 
   //-- 4) Volver a ejecutar update cuando toque
