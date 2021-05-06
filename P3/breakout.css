@@ -2,3 +2,11 @@
 canvas {
     background-color: black;    
   }
+
+  @font-face {
+    font-family: "Arcade";
+    src: url("arcade.TTF");
+  }
+body{
+  background-image: url("fondo.jpg");
+}

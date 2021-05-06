@@ -2,6 +2,9 @@ console.log("Ejecutando JS...");
 
 const canvas = document.getElementById("canvas");
 
+const choqueladrillo = new Audio('ladrillo.mp3');
+const choqueraqueta = new Audio('raqueta.mp3');
+const perdervida = new Audio('vida.mp3');
 
 //-- Definir el tamaño del convas
 canvas.width = 500;
@@ -40,28 +43,28 @@ function DibujarBola(){
 }
 
 
-var lifes = 5;
+var lifes = 3;
 
 //Vidas restantes
 function VidasRestantes(){
   ctx.fillText("Vidas restantes: " +lifes, 8, 12);
   ctx.fillStyle = 'white';
-  ctx.font = "15px Arial";
+  ctx.font = "12px Arcade";
 }
 
 var points = 0;
 
 //Puntos conseguidos
 function PuntosConseguidos(){
-  ctx.fillText("Puntos: " +points, 275, 12);
+  ctx.fillText("Puntos: " +points, 300, 12);
   ctx.fillStyle = 'white';
-  ctx.font = "15px Arial"
+  ctx.font = "12px arcade"
 }
 //Empieza el juego
 window.onkeydown = (e) => {
   if(e.keyCode == 32){
-    velx = 3;
-    vely = -3;
+    velx = 5;
+    vely = 5;
   }
 }
 //Raqueta está parada al empezar
@@ -151,6 +154,7 @@ function update(){
             ladrillos[i][j].visible = false;
             vely = -vely;
             points = points + 1;
+            choqueladrillo.play();
           }
         }
       }
@@ -168,6 +172,7 @@ function update(){
       if(x > raqueta && x <raqueta + raquetaAncho){
           vely = -vely;
       }
+      choqueraqueta.play();
   }
 
   //Pelota toca el suelo
@@ -179,6 +184,7 @@ function update(){
     y = canvas.height - 10;
     raqueta= (canvas.width - raquetaAncho)/2;
     lifes -= 1;
+    perdervida.play();
   }else if(lifes == 0){
     velx = 0;
     vely = 0;
