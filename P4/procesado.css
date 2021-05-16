@@ -1,0 +1,26 @@
+@font-face {
+    font-family: "hakio";
+    src: url("hakio.ttf");
+}
+
+h1{
+    font-family: hakio, Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+}
+
+body{
+    background-color: black;
+    color: white;
+}
+
+.botones{
+    background-color: darkslategray;
+    color: white;
+}
+
+
+#modificada{
+    text-align: right;
+}
