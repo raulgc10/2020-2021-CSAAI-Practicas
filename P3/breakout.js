@@ -198,7 +198,7 @@ function update(){
     
   }
 //Ganamos el juego
-  if(points == 2){
+  if(points == 78){
     velx = 0;
     vely = 0;
     raqueta = (canvas.width - raquetaAncho)/2;
