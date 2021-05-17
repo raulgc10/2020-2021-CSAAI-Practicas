@@ -89,10 +89,10 @@ function keyUpHandler(e){
 document.addEventListener("keydown", keyDownHandler, false);
 
 function keyDownHandler(e){
-  if(e.keyCode == 68){
+  if(e.keyCode == 39){
     derecha = true;
   }
-  if(e.keyCode == 65){
+  if(e.keyCode == 37){
     izquierda = true;
   }
 }
