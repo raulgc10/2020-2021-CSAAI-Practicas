@@ -77,10 +77,10 @@ var derecha = false;
 document.addEventListener("keyup", keyUpHandler, false);
 
 function keyUpHandler(e){
-  if(e.keyCode == 68){
+  if(e.keyCode == 39){
     derecha = false;
   }
-  if(e.keyCode == 65){
+  if(e.keyCode == 37){
     izquierda = false;
   }
 }
